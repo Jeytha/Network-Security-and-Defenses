@@ -1,0 +1,18 @@
+# Start the OpenVPN client using the given configuration file to connect to the VPN server.
+sudo openvpn vpnbook-ca198-udp25000.ovpn
+# Enable IPv4 packet forwarding by appending the setting to the system configuration file.
+echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.conf
+# Enable IPv4 packet forwarding by appending the setting to the system configuration file.
+echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.conf
+# Apply the updated system configuration to enable IP forwarding immediately.
+sudo sysctl -p
+# Add a static route to the internal network 192.168.60.0/24 via VPN tunnel (next-hop 10.10.0.1) using interface tun2.
+ip route add 192.168.60.0/24 via 10.10.0.1 dev tun2
+# Add a NAT rule to masquerade traffic from the 10.9.0.0/24 network going to 192.168.60.0/24 through the VPN interface tun2.
+iptables -t nat -A POSTROUTING -s 10.9.0.0/24 -d 192.168.60.0/24 -o tun2 -j MASQUERADE
+# Launch a Docker container named 'seed-router' with host networking, allowing it to access tun2 directly.
+docker run --name seed-router --network host -it seed-router-image bash
+# Capture and display ICMP (ping) traffic on the tun2 VPN interface for monitoring or debugging.
+sudo tcpdump -i tun2 icmp
+# Send ICMP Echo Request (ping) to a host on the internal network to test connectivity through the VPN.
+ping 192.168.60.5
