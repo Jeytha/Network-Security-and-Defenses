@@ -1,6 +1,8 @@
 # Network-Security-and-Defenses
 Providing network security for a conceptualised e-commerce company
+
 Network Topology
+
 The company has the network below. 192.168.60.0/24 is an internal network where many ‎employees need to access for internal services and customer database. 10.9.0.0/24 is the DMZ ‎where many public services are offered to LB’s customers. ‎
 
 The virtual machine is available at https://seedsecuritylabs.org/labsetup.html. Other virtual ‎machines are not allowed. The Docker network setting file for this topology can be downloaded ‎from: ‎
@@ -8,7 +10,8 @@ The virtual machine is available at https://seedsecuritylabs.org/labsetup.html. 
 ‎(for ARM chip) https://seedsecuritylabs.org/Labs_20.04/Files/Firewall/Labsetup-arm.zip.‎
 
 Luna Bags (LB) employs a segmented network topology for effective security and traffic management:
-Apache Web Server Setup
+
+1. Apache Web Server Setup
 Installed on 10.9.0.5 (DMZ).
 
 Apache2 server default page confirmed operational via:
@@ -35,6 +38,7 @@ Contains critical company assets (employee workstations, databases, admin tools)
 Protected by strict firewall rules to block unauthorized external access.
 
 2. Executive Summary of Key Implementations
+
 2.1 Apache Web Server
 
 Installed in the DMZ to serve external website visitors.
