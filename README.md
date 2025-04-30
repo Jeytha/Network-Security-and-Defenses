@@ -194,6 +194,44 @@ Monitor logs for blocked traffic attempts.
 Disable unused services to reduce vulnerabilities.
 
 
+# Docker Setup and Container Launch
+
+sudo docker-compose build
+
+# Builds Docker images for internal and DMZ hosts using Dockerfile
+
+sudo docker-compose up
+
+# Launches containers and creates isolated Docker networks (DMZ and Internal)
+# Container Access and Package Update
+
+sudo docker ps
+
+# Lists running Docker containers
+
+sudo docker exec -it hostA-10.9.0.5 bash
+
+# Accesses DMZ host container (10.9.0.5)
+
+apt update
+
+# Updates APT package list in the container
+
+# Connectivity Test (ICMP Ping)
+
+sudo docker exec -it host1-192.168.60.5 bash
+
+# Accesses internal host container (192.168.60.5)
+
+ping 10.9.0.5
+
+# Sends ICMP pings from internal host to DMZ to simulate traffic
+
+# Snort Intrusion Detection System (IDS)
+
+snort -i eth0 -A console -q -c /etc/snort/snort.conf
+
+# Starts Snort IDS on eth0 with console alerts in quiet mode using config file
 
 
 
