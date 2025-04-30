@@ -1,0 +1,15 @@
+# Snort to syslog 
+sudo sed -i '/^output log_syslog:/d' /etc/snort/snort.conf 
+# Remove existing syslog config 
+sudo echo "output log_syslog: alert, log_alert_once, full_packet" >> /etc/snort/snort.conf 
+# Add new syslog
+config sudo systemctl restart snort 
+# Restart Snort 
+tail -n 20 /var/log/syslog | grep "Snort"
+ # Check syslog output 
+echo "Snort->syslog.
+
+
+
+
+
