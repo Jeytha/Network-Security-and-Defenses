@@ -1,0 +1,8 @@
+chmod +x build.sh && ./build.sh
+chmod +x launch.sh && ./launch.sh
+chmod +x update_containers.sh && ./update_containers.sh
+chmod +x ping_test.sh && ./ping_test.sh
+chmod +x start_snort.sh && ./start_snort.sh
+chmod +x snort_syslog_setup.sh && ./snort_syslog_setup.sh
+chmod +x firewall_test_and_netstat.sh && ./firewall_test_and_netstat.sh
+chmod +x vpn_setup.sh && ./vpn_setup.sh
