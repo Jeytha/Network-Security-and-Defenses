@@ -1,20 +1,19 @@
 Securing a Conceptualised E-Commerce Company - Luna Bags (LB)
 
 Network Topology Overview
-Luna Bags (LB) employs a segmented network architecture for robust security and traffic control:
 
-[Internet]
-    |
-    v
-[SEED Router / Firewall]
-    |                   |
-    v                   v
-[DMZ Network]         [Internal Network]
-(10.9.0.0/24)         (192.168.60.0/24)
-    |                     |
-[Apache Web Server]   [Employee Workstations, DBs]
-(10.9.0.5)                 
+Luna Bags (LB) uses a segmented network architecture to enhance security and manage traffic effectively. The entire system is structured into three main zones: the external network (Internet), the DMZ (Demilitarized Zone), and the internal network.
+All incoming traffic from the Internet first passes through the SEED Router, which also acts as a firewall. This device plays a critical role in filtering and controlling access between the zones. It ensures that only permitted traffic can reach sensitive areas of the network.
 
+From the SEED Router, the network branches into two distinct segments:
+
+DMZ Network (10.9.0.0/24):
+This zone acts as a buffer between the public Internet and the internal network. It hosts public-facing services, such as the Apache web server, which is installed on IP address 10.9.0.5. The purpose of the DMZ is to provide services that need to be accessible from the outside while isolating these services from the company’s internal resources, thereby minimizing risk in the event of a compromise.
+
+Internal Network (192.168.60.0/24):
+This zone houses critical internal assets such as employee workstations, internal databases, and administrative tools. It is completely isolated from direct Internet access and can only be reached through controlled and secure channels like a VPN. This segmentation ensures that even if a service in the DMZ is compromised, attackers cannot directly access the internal systems.
+
+This layered and segmented approach allows Luna Bags to contain potential threats, limit exposure, and enforce strict access controls between the different parts of the network. 
 External Network: Hosts public-facing services accessed by customers and suppliers.
 DMZ (Demilitarized Zone): Hosts the Apache web server. Segregated to reduce attack surface.
 Internal Network: Houses sensitive resources like employee systems and databases. Fully isolated.
